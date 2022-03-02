@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf02Binding"
+        xmlns:vm="clr-namespace:Wpf02Binding.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <!--<Window.DataContext>
+        <vm:PanelViewModel />
+    </Window.DataContext>-->
     <ScrollViewer>
         <StackPanel>
             <StackPanel Margin="10">
@@ -16,9 +20,24 @@
             </StackPanel>
             <StackPanel Margin="10">
                 <Label Content="Vazba mezi komponentami" />
-                <Label Content="Nějaký text" x:Name="lblResult2" />
+                <Label Content="{Binding ElementName=txtInput2, Path=Text}" FontSize="{Binding ElementName=sliSize2, Path=Value}" x:Name="lblResult2" />
                 <TextBox Text="Nějaký text" Margin="5" x:Name="txtInput2" />
                 <Slider Minimum="8" Maximum="48" Value="24" Margin="5" x:Name="sliSize2" />
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label Content="Vazba mezi komponentou a vlastností" />
+                <Label Content="{Binding TextValue}" FontSize="{Binding SizeValue}" />
+                <TextBox Text="{Binding TextValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
+                <Slider Minimum="8" Maximum="48" Value="{Binding SizeValue, Mode=TwoWay}" Margin="5" />
+            </StackPanel>
+            <StackPanel Margin="10">
+                <StackPanel.DataContext>
+                    <vm:PanelViewModel />
+                </StackPanel.DataContext>
+                <Label Content="Vazba mezi komponentou a vlastností" />
+                <Label Content="{Binding TextValue}" FontSize="{Binding SizeValue}" />
+                <TextBox Text="{Binding TextValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
+                <Slider Minimum="8" Maximum="48" Value="{Binding SizeValue, Mode=TwoWay}" Margin="5" />
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

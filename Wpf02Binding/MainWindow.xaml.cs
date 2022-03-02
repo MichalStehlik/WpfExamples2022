@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,11 +20,14 @@ namespace Wpf02Binding
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public MainWindow()
         {
+            DataContext = this;
             InitializeComponent();
+            TextValue = "BBB";
+            SizeValue = 24;
         }
 
         // 1. zpusob
@@ -42,6 +47,29 @@ namespace Wpf02Binding
                 var size = (sender as Slider).Value;
                 lblResult1.FontSize = size;
             }
+        }
+
+        // 3. zpusob
+
+        private string _text;
+        private double _size;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public string TextValue
+        {
+            get { return _text; }
+            set { _text = value; NotifyPropertyChanged(); }
+        }
+
+        public double SizeValue
+        {
+            get { return _size; }
+            set { _size = value; NotifyPropertyChanged(); }
         }
     }
 }
