@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf01Resources", "Wpf01Resources\Wpf01Resources.csproj", "{E1BB4EBD-5627-46C2-BD5E-F5F76D7DA861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf02Binding", "Wpf02Binding\Wpf02Binding.csproj", "{6F87CB35-56A0-4E83-971D-8E9CC9B27C23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf02Binding", "Wpf02Binding\Wpf02Binding.csproj", "{6F87CB35-56A0-4E83-971D-8E9CC9B27C23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf03Convertors", "Wpf03Convertors\Wpf03Convertors.csproj", "{BB57C9D1-E4B2-4CE1-ADF0-C42A3F3388B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6F87CB35-56A0-4E83-971D-8E9CC9B27C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F87CB35-56A0-4E83-971D-8E9CC9B27C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F87CB35-56A0-4E83-971D-8E9CC9B27C23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB57C9D1-E4B2-4CE1-ADF0-C42A3F3388B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB57C9D1-E4B2-4CE1-ADF0-C42A3F3388B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB57C9D1-E4B2-4CE1-ADF0-C42A3F3388B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB57C9D1-E4B2-4CE1-ADF0-C42A3F3388B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
