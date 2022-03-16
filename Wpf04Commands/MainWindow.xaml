@@ -11,8 +11,11 @@
         <vm:MainViewModel />
     </Window.DataContext>
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="106,183,0,0" VerticalAlignment="Top" Command="{Binding RollCommand}" />
+        <Button Content="Roll" HorizontalAlignment="Left" Margin="106,183,0,0" VerticalAlignment="Top" Command="{Binding RollCommand}" />
         <Label Content="{Binding Number}" HorizontalAlignment="Left" Margin="106,90,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sliRange" Margin="58,139,622,0" VerticalAlignment="Top" Width="120" Minimum="0" Maximum="100" Value="{Binding Range}"/>
+        <Label Content="{Binding ElementName=sliRange, Path=Value}" HorizontalAlignment="Left" Margin="231,135,0,0" VerticalAlignment="Top"/>
+        <Button Content="Roll Range" HorizontalAlignment="Left" Margin="158,183,0,0" VerticalAlignment="Top" Command="{Binding RollRangeCommand}" CommandParameter="{Binding Range}"/>
 
     </Grid>
 </Window>

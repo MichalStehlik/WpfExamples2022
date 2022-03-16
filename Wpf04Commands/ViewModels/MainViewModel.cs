@@ -18,8 +18,10 @@ namespace Wpf04Commands.ViewModels
 
         private Random _random = new Random();
         private int _number;
+        private int _range;
 
         public RelayCommand RollCommand { get; set; }
+        public ParametrizedRelayCommand<int> RollRangeCommand { get; set; }
 
         public MainViewModel()
         {
@@ -28,8 +30,16 @@ namespace Wpf04Commands.ViewModels
                 {
                     Number = _random.Next(100);
                 },
-                () => { return true; }
+                () => { return (Range > 3 && Range < 30); }
                 );
+            RollRangeCommand = new ParametrizedRelayCommand<int>(
+                (value) =>
+                {
+                    Number = _random.Next(value);
+                },
+                (parameter) => { return (Range > 3 && Range < 90); }
+                );
+            Range = 10;
             Number = _random.Next(100);
         }
 
@@ -43,6 +53,21 @@ namespace Wpf04Commands.ViewModels
             {
                 _number = value;
                 NotifyPropertyChanged();
+            }
+        }
+
+        public int Range
+        {
+            get
+            {
+                return _range;
+            }
+            set
+            {
+                _range = value;
+                NotifyPropertyChanged();
+                RollCommand.RaiseCanExecureChanged();
+                RollRangeCommand.RaiseCanExecureChanged();
             }
         }
     }
