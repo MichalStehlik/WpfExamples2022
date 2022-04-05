@@ -1,0 +1,43 @@
+﻿<Window x:Class="Wpf05Collection.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf05Collection"
+        xmlns:vm="clr-namespace:Wpf05Collection.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Items">
+                <MenuItem Header="_Add" Command="{Binding Add}"/>
+                <MenuItem Header="_Remove" Command="{Binding Remove}"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left" Text="Firstname" TextWrapping="Wrap" Margin="5"/>
+                <TextBox HorizontalAlignment="Stretch" Margin="5" Text="{Binding SelectedStudent.Firstname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" />
+                <TextBlock HorizontalAlignment="Left" Text="Lastname" TextWrapping="Wrap" Margin="5"/>
+                <TextBox HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" Text="{Binding SelectedStudent.Lastname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" />
+                <TextBlock  HorizontalAlignment="Left" Text="Average Evaluation" TextWrapping="Wrap" Margin="5"/>
+                <Slider HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" Value="{Binding SelectedStudent.Average, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="1" Maximum="5" />
+                <TextBlock HorizontalAlignment="Left" Text="Gender" TextWrapping="Wrap" Margin="5" VerticalAlignment="Center"/>
+                <ComboBox HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" SelectedItem="{Binding SelectedStudent.Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Genders}"/>
+                <CheckBox IsChecked="{Binding Path=SelectedStudent.Examined, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalAlignment="Center">Examined</CheckBox>
+            </StackPanel>
+            <ListBox Grid.Row="0" ItemsSource="{Binding Students}" SelectedIndex="{Binding SelectedStudentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="11">
+            </ListBox>
+        </Grid>
+    </DockPanel>
+</Window>

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf02Binding", "Wpf02Bindin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf03Convertors", "Wpf03Convertors\Wpf03Convertors.csproj", "{BB57C9D1-E4B2-4CE1-ADF0-C42A3F3388B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf04Commands", "Wpf04Commands\Wpf04Commands.csproj", "{062BBDCA-6E06-4B61-B82D-FC949390E83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf04Commands", "Wpf04Commands\Wpf04Commands.csproj", "{062BBDCA-6E06-4B61-B82D-FC949390E83B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf05Collection", "Wpf05Collection\Wpf05Collection.csproj", "{8E56769C-7C96-4A5B-A2AB-571B9344DDD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{062BBDCA-6E06-4B61-B82D-FC949390E83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{062BBDCA-6E06-4B61-B82D-FC949390E83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{062BBDCA-6E06-4B61-B82D-FC949390E83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E56769C-7C96-4A5B-A2AB-571B9344DDD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E56769C-7C96-4A5B-A2AB-571B9344DDD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E56769C-7C96-4A5B-A2AB-571B9344DDD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E56769C-7C96-4A5B-A2AB-571B9344DDD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
