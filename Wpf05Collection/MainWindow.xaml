@@ -36,7 +36,28 @@
                 <ComboBox HorizontalAlignment="Stretch" Margin="5" Grid.Row="1" SelectedItem="{Binding SelectedStudent.Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Genders}"/>
                 <CheckBox IsChecked="{Binding Path=SelectedStudent.Examined, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalAlignment="Center">Examined</CheckBox>
             </StackPanel>
-            <ListBox Grid.Row="0" ItemsSource="{Binding Students}" SelectedIndex="{Binding SelectedStudentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="11">
+            <ListBox 
+                Grid.Row="0" 
+                ItemsSource="{Binding Students}" 
+                SelectedIndex="{Binding SelectedStudentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                SelectedItem="{Binding SelectedStudent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                Grid.RowSpan="11"
+                HorizontalContentAlignment="Stretch"
+                >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" MinWidth="150"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Firstname}"></TextBlock>
+                            <TextBlock Text="{Binding Lastname}" Grid.Column="1"></TextBlock>
+                            <CheckBox Grid.Column="2" IsChecked="{Binding Examined}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
     </DockPanel>
