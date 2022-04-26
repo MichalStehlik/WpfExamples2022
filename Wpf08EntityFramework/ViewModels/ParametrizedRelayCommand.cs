@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Wpf05Collection.ViewModels
+namespace Wpf08EntityFramework.ViewModels
 {
     internal class ParametrizedRelayCommand<T> : ICommand
     {
         public event EventHandler? CanExecuteChanged;
 
         private Action<T> _execute;
-        private Func<T, bool>? _canExecute;
+        private Func<T, bool> _canExecute;
 
-        public ParametrizedRelayCommand(Action<T> execute, Func<T, bool>? canExecute = null)
+        public ParametrizedRelayCommand(Action<T> execute, Func<T, bool> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;
