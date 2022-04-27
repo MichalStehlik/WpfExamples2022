@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf08EntityFramework.Data;
+using Wpf08EntityFramework.Models;
 using Wpf08EntityFramework.ViewModels;
 
 namespace Wpf08EntityFramework
@@ -22,9 +23,21 @@ namespace Wpf08EntityFramework
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainViewModel vm;
         internal MainWindow(ApplicationDbContext db)
         {          
             InitializeComponent();
+            vm = (MainViewModel)DataContext;
+            vm.Db = db;
+            vm.ReloadCommand.Execute(null);
+        }
+
+        private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+            Book newItem = (Book)e.NewItem;
+            vm.Db.Books.Add(newItem);
+            vm.Db.SaveChanges();
+            vm.ReloadCommand.Execute(null);
         }
     }
 }

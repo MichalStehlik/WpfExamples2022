@@ -14,7 +14,7 @@ namespace Wpf08EntityFramework.Data
         public DbSet<Book>? Books { get; set; }
         public ApplicationDbContext() : base()
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options)

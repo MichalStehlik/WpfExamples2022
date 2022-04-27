@@ -15,9 +15,29 @@ namespace Wpf08EntityFramework.ViewModels
     {
         public ApplicationDbContext Db { get; set; }
         private ObservableCollection<Book> _books;
+
+        public RelayCommand ReloadCommand { get; set; }
+        public ParametrizedRelayCommand<int> DeleteCommand { get; set; }
         public MainViewModel()
         {
-
+            ReloadCommand = new RelayCommand(
+                () => {
+                    if (Db != null)
+                    {
+                        Books = new ObservableCollection<Book>(Db.Books.ToList());
+                    }
+                }
+                );
+            DeleteCommand = new ParametrizedRelayCommand<int>(
+                (id) => {
+                    if (Db != null)
+                    {
+                        Book b = Db.Books.Where(x => x.BookId == id).SingleOrDefault();
+                        Db.Books.Remove(b);
+                        Db.SaveChanges();
+                    }
+                }
+                );
         }
         public ObservableCollection<Book> Books {
             get { return _books; }

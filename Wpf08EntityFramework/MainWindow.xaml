@@ -11,6 +11,22 @@
         <vm:MainViewModel/>
     </Window.DataContext>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <ListBox ItemsSource="{Binding Books}"></ListBox>
+        <DataGrid Grid.Column="1" ItemsSource="{Binding Books}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Resources>
+                <DataTemplate x:Key="ActionTemplate">
+                    <Button Command="{Binding DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">Smazat</Button>
+                </DataTemplate>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Název" Binding="{Binding Title}" />
+                <DataGridTextColumn Header="Stránek" Binding="{Binding Pages}" />
+                <DataGridTemplateColumn Header="Akce" CellTemplate="{StaticResource ActionTemplate}"></DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
