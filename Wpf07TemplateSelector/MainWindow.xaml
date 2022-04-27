@@ -18,25 +18,26 @@
         </DataTemplate>
         <DataTemplate x:Key="StudentItem">
             <StackPanel Orientation="Horizontal">
-                <Ellipse Width="20" Height="20" Fill="Red" />
+                <Ellipse Width="20" Height="20" Fill="Red" Margin="0,0,10,0" />
                 <TextBlock Text="{Binding Firstname}"  Margin="0,0,10,0" />
-                <TextBlock Text="{Binding Lastname}" FontWeight="Bold" />
+                <TextBlock Text="{Binding Lastname}" FontWeight="Bold" Margin="0,0,10,0" />
                 <TextBlock Text="{Binding Classname}" />
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="TeacherItem">
             <StackPanel Orientation="Horizontal">
-                <Rectangle Width="20" Height="20" Fill="Green" />
+                <Rectangle Width="20" Height="20" Fill="Green" Margin="0,0,10,0" />
                 <TextBlock Text="{Binding Firstname}" Margin="0,0,10,0" />
                 <TextBlock Text="{Binding Lastname}" FontWeight="Bold" />
             </StackPanel>
         </DataTemplate>
+        <vm:HumanTemplateSelector x:Key="tempSelector" TeacherTemplate="{StaticResource TeacherItem}" StudentTemplate="{StaticResource StudentItem}" HumanTemplate="{StaticResource HumanItem}" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding People}" ItemTemplate="{StaticResource HumanItem}" />
+        <ListBox ItemsSource="{Binding People}" ItemTemplateSelector="{StaticResource tempSelector}"/>
     </Grid>
 </Window>
