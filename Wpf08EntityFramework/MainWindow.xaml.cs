@@ -39,5 +39,20 @@ namespace Wpf08EntityFramework
             vm.Db.SaveChanges();
             vm.ReloadCommand.Execute(null);
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+                     
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (vm.SelectedBook != null)
+            {
+                EditWindow editWindow = new EditWindow();
+                editWindow.DataContext = vm;
+                editWindow.ShowDialog();
+            }
+        }
     }
 }

@@ -10,23 +10,41 @@
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Books}"></ListBox>
-        <DataGrid Grid.Column="1" ItemsSource="{Binding Books}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
-            <DataGrid.Resources>
-                <DataTemplate x:Key="ActionTemplate">
-                    <Button Command="{Binding DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">Smazat</Button>
-                </DataTemplate>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Název" Binding="{Binding Title}" />
-                <DataGridTextColumn Header="Stránek" Binding="{Binding Pages}" />
-                <DataGridTemplateColumn Header="Akce" CellTemplate="{StaticResource ActionTemplate}"></DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Items">
+                <MenuItem Header="_Add" Click="MenuItem_Click"/>
+                <MenuItem Header="_Remove" Command="{Binding Remove}"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid ItemsSource="{Binding Books}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" SelectedItem="{Binding SelectedBook}">
+                <DataGrid.Resources>
+                    <DataTemplate x:Key="ActionTemplate">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding BookId}">Smazat</Button>
+                            <Button Click="Button_Click">Edit</Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Název" Binding="{Binding Title}" />
+                    <DataGridTextColumn Header="Stránek" Binding="{Binding Pages}" />
+                    <DataGridTemplateColumn Header="Akce" CellTemplate="{StaticResource ActionTemplate}"></DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ScrollViewer Grid.Column="1">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <Label>Název</Label>
+                    <TextBox Text="{Binding SelectedBook.Title}"/>
+                    <Label>Počet stránek</Label>
+                    <TextBox Text="{Binding SelectedBook.Pages}"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </DockPanel>
 </Window>
