@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,17 @@ namespace Wpf08EntityFramework
                 editWindow.DataContext = vm;
                 editWindow.ShowDialog();
             }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel document (*.xlsx)|*.docx|All files (*.*)|*.*"; 
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                vm.ExportCommand.Execute(saveFileDialog.FileName);
+            }               
         }
     }
 }

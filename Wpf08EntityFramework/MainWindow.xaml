@@ -15,6 +15,7 @@
             <MenuItem Header="_Items">
                 <MenuItem Header="_Add" Click="MenuItem_Click"/>
                 <MenuItem Header="_Remove" Command="{Binding Remove}"/>
+                <MenuItem Header="_Export" Click="MenuItem_Click_1"/>
             </MenuItem>
         </Menu>
         <Grid>

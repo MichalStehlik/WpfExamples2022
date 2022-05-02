@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Wpf08EntityFramework.Data;
 using Wpf08EntityFramework.Models;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Wpf08EntityFramework.ViewModels
 {
@@ -18,6 +16,7 @@ namespace Wpf08EntityFramework.ViewModels
         private Book _selectedBook;
         public RelayCommand ReloadCommand { get; set; }
         public ParametrizedRelayCommand<int> DeleteCommand { get; set; }
+        public ParametrizedRelayCommand<string> ExportCommand { get; set; }
         public MainViewModel()
         {
             ReloadCommand = new RelayCommand(
@@ -36,6 +35,24 @@ namespace Wpf08EntityFramework.ViewModels
                         Db.Books.Remove(b);
                         Db.SaveChanges();
                         Books = new ObservableCollection<Book>(Db.Books.ToList());
+                    }
+                }
+                );
+            ExportCommand = new ParametrizedRelayCommand<string>(
+                (filename) => {
+                    if (Db != null)
+                    {
+                        // https://docs.microsoft.com/cs-cz/dotnet/csharp/programming-guide/interop/how-to-access-office-onterop-objects
+                        // Syncfusion.XlsIO
+                        /*
+                        Excel.Application excel = new Excel.Application();
+                        excel.Workbooks.Add();
+                        Excel._Worksheet workSheet = (Excel.Worksheet)excel.ActiveSheet;
+                        workSheet.Cells[1, "A"] = "ID";
+                        workSheet.Cells[1, "B"] = "Název";
+                        workSheet.Cells[1, "C"] = "Počet stran";
+                        var books = Db.Books.ToList();
+                        */
                     }
                 }
                 );
