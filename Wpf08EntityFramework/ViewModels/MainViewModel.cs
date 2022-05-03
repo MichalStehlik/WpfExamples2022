@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Wpf08EntityFramework.Data;
 using Wpf08EntityFramework.Models;
-using Excel = Microsoft.Office.Interop.Excel;
+//using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Wpf08EntityFramework.ViewModels
 {

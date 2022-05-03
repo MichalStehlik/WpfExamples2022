@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf05Collection", "Wpf05Col
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf06Styles", "Wpf06Styles\Wpf06Styles.csproj", "{04A0F497-7B40-437C-9CED-2D66D5F76820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf07TemplateSelector", "Wpf07TemplateSelector\Wpf07TemplateSelector.csproj", "{B1024986-21F4-446A-8D60-A8C866D9F922}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf07TemplateSelector", "Wpf07TemplateSelector\Wpf07TemplateSelector.csproj", "{B1024986-21F4-446A-8D60-A8C866D9F922}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf08EntityFramework", "Wpf08EntityFramework\Wpf08EntityFramework.csproj", "{08D54004-179C-47CA-B6AA-5B1BD751D098}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf08EntityFramework", "Wpf08EntityFramework\Wpf08EntityFramework.csproj", "{08D54004-179C-47CA-B6AA-5B1BD751D098}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf09WebApiClient", "Wpf09WebApiClient\Wpf09WebApiClient.csproj", "{D5D0769D-E45D-472B-BDA2-7BAB5A2716DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{08D54004-179C-47CA-B6AA-5B1BD751D098}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08D54004-179C-47CA-B6AA-5B1BD751D098}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08D54004-179C-47CA-B6AA-5B1BD751D098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D0769D-E45D-472B-BDA2-7BAB5A2716DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5D0769D-E45D-472B-BDA2-7BAB5A2716DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5D0769D-E45D-472B-BDA2-7BAB5A2716DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D0769D-E45D-472B-BDA2-7BAB5A2716DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
