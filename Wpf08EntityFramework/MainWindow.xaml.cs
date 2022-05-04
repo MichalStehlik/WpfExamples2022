@@ -52,6 +52,7 @@ namespace Wpf08EntityFramework
             {
                 EditWindow editWindow = new EditWindow();
                 editWindow.DataContext = vm;
+                vm.EditedBook = vm.SelectedBook;
                 editWindow.ShowDialog();
             }
         }

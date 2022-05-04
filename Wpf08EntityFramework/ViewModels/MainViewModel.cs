@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Wpf08EntityFramework.Data;
 using Wpf08EntityFramework.Models;
-//using Excel = Microsoft.Office.Interop.Excel;
+// using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Wpf08EntityFramework.ViewModels
 {
@@ -14,9 +14,11 @@ namespace Wpf08EntityFramework.ViewModels
         public ApplicationDbContext Db { get; set; }
         private ObservableCollection<Book> _books;
         private Book _selectedBook;
+        private Book _editedBook;
         public RelayCommand ReloadCommand { get; set; }
         public ParametrizedRelayCommand<int> DeleteCommand { get; set; }
         public ParametrizedRelayCommand<string> ExportCommand { get; set; }
+        public ParametrizedRelayCommand<Book> UpdateCommand { get; set; }
         public MainViewModel()
         {
             ReloadCommand = new RelayCommand(
@@ -33,6 +35,18 @@ namespace Wpf08EntityFramework.ViewModels
                     {
                         Book b = Db.Books.Where(x => x.BookId == id).SingleOrDefault();
                         Db.Books.Remove(b);
+                        Db.SaveChanges();
+                        Books = new ObservableCollection<Book>(Db.Books.ToList());
+                    }
+                }
+                );
+            UpdateCommand = new ParametrizedRelayCommand<Book>(
+                (book) => {
+                    if (Db != null)
+                    {
+                        Book b = Db.Books.Where(x => x.BookId == book.BookId).SingleOrDefault();
+                        b.Title = book.Title;
+                        b.Pages = book.Pages;
                         Db.SaveChanges();
                         Books = new ObservableCollection<Book>(Db.Books.ToList());
                     }
@@ -64,6 +78,11 @@ namespace Wpf08EntityFramework.ViewModels
         public Book SelectedBook {
             get { return _selectedBook; }
             set { _selectedBook = value; NotifyPropertyChanged(); }
+        }
+        public Book EditedBook
+        {
+            get { return _editedBook; }
+            set { _editedBook = value; NotifyPropertyChanged(); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

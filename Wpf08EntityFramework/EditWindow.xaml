@@ -9,10 +9,10 @@
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10">
             <Label>Název</Label>
-            <TextBox />
+            <TextBox Text="{Binding EditedBook.Title}"/>
             <Label>Stránky</Label>
-            <TextBox />
-            <Button>Uložit</Button>
+            <TextBox Text="{Binding EditedBook.Pages}"/>
+            <Button Click="Button_Click_1" Command="{Binding UpdateCommand}" CommandParameter="{Binding EditedBook}">Uložit</Button>
             <Button Click="Button_Click">Storno</Button>
         </StackPanel>
     </Grid>

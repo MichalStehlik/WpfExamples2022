@@ -41,9 +41,9 @@
             <ScrollViewer Grid.Column="1">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <Label>Název</Label>
-                    <TextBox Text="{Binding SelectedBook.Title}"/>
+                    <TextBox Text="{Binding SelectedBook.Title}" IsReadOnly="True" />
                     <Label>Počet stránek</Label>
-                    <TextBox Text="{Binding SelectedBook.Pages}"/>
+                    <TextBox Text="{Binding SelectedBook.Pages}" IsReadOnly="True"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

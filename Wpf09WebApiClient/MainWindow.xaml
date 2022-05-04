@@ -8,17 +8,26 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        
+        <DataTemplate x:Key="Idea">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding name}"/>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Reload" />
+            <MenuItem Header="_Reload" Command="{Binding ReloadCommand}"/>
         </Menu>
         <Grid>
-
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding Response}" TextWrapping="Wrap" />
+            <ListBox ItemsSource="{Binding Ideas}" Grid.Column="1" ItemTemplate="{StaticResource Idea}"/>
         </Grid>
     </DockPanel>
 </Window>
